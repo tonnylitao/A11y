@@ -7,6 +7,8 @@ A swift package to simplify accessibility programming
 ### set accessibility identifiers for views with Mirror
 
 ```swift
+import A11y
+
 class ViewController: UIViewController {
     @IBOutlet weak nameField: UITextField!
 
