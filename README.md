@@ -24,5 +24,7 @@ class ViewController: UIViewController {
 ### set accessibility identifier for view
 
 ```swift
+import A11y
+
 nameLbl.setA11yIdentifier("user_name")
 ```
