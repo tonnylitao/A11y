@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-extension UIResponder {
+public extension UIResponder {
     
     /*
      set accessibility identifiers as views name
