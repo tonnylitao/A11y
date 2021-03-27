@@ -1,8 +1,9 @@
 import Foundation
 import UIKit
 
-public extension UIResponder {
-    
+public protocol Accessible {}
+
+public extension Accessible {
     /*
      set accessibility identifiers as views name
      
@@ -34,3 +35,5 @@ public extension UIResponder {
             }
     }
 }
+
+extension UIResponder: Accessible {}
