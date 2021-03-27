@@ -11,12 +11,14 @@ import A11y
 
 class ViewController: UIViewController {
     @IBOutlet weak nameField: UITextField!
+    @IBOutlet weak emailField: UITextField!
 
     func viewDidLoad() {
         super.viewDidLoad()
 
         generateA11yIdentifiers()
         //nameField's identifier is string of nameField
+        //emailField's identifier is string of emailField 
     }
 }
 ```

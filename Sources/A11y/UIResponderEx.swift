@@ -21,11 +21,10 @@ public extension UIResponder {
         Mirror(reflecting: self)
             .children
             .forEach {
-                //"accessibilityIdentifier"
-                let key = #keyPath(UIView.accessibilityIdentifier)
+                let key = #keyPath(UIView.accessibilityIdentifier) //"accessibilityIdentifier"
                 
                 guard let object = $0.value as? NSObject,
-                      let label = $0.label,
+                      let label = $0.label?.replacingOccurrences(of: "$__lazy_storage_$_", with: ""),
                       object.responds(to: NSSelectorFromString(key)) else {
                     return
                 }
