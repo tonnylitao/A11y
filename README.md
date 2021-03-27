@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     func viewDidLoad() {
         super.viewDidLoad()
 
-        setA11yIdentifiers()
+        generateA11yIdentifiers()
         //nameField's identifier is string of nameField
     }
 }

@@ -13,29 +13,25 @@ public extension UIResponder {
         func viewDidLoad() {
             super.viewDidLoad()
             
-            setA11yIdentifiers()
+            generateA11yIdentifiers()
         }
      }
      */
-    func setA11yIdentifiers(_ prefix: String = "") {
+    func generateA11yIdentifiers(_ prefix: String = "") {
         Mirror(reflecting: self)
             .children
             .forEach {
-                guard let label = $0.label else {
+                //"accessibilityIdentifier"
+                let key = #keyPath(UIView.accessibilityIdentifier)
+                
+                guard let object = $0.value as? NSObject,
+                      let label = $0.label,
+                      object.responds(to: NSSelectorFromString(key)) else {
                     return
                 }
                 
-                let view = $0.value
-                let identifier = prefix + label
-                
-                (view as? NSObject)?.isAccessibilityElement = true
-                
-                (view as? UIView)?.accessibilityIdentifier = identifier
-                (view as? UIBarItem)?.accessibilityIdentifier = identifier
-                (view as? UIAlertAction)?.accessibilityIdentifier = identifier
-                if #available(iOS 13.0, *) {
-                    (view as? UIMenuElement)?.accessibilityIdentifier = identifier
-                }
+                object.isAccessibilityElement = true
+                object.setValue(prefix + label, forKey: key)
             }
     }
 }
