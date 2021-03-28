@@ -36,4 +36,7 @@ public extension Accessible {
     }
 }
 
+#if DEBUG
 extension UIResponder: Accessible {}
+#endif
+
