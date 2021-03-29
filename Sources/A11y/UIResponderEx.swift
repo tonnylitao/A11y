@@ -19,6 +19,10 @@ public extension Accessible {
      }
      */
     func generateA11yIdentifiers(_ prefix: String = "") {
+        #if !DEBUG
+        return
+        #endif
+        
         Mirror(reflecting: self)
             .children
             .forEach {
@@ -35,8 +39,3 @@ public extension Accessible {
             }
     }
 }
-
-#if DEBUG
-extension UIResponder: Accessible {}
-#endif
-
